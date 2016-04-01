@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Unit2</string>
+    <string name="action_settings">Settings</string>
+    <string name="ROLL">ROLL</string>
+    <string name="HOLD">HOLD</string>
+    <string name="RESET">RESET</string>
+</resources>
