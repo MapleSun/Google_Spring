@@ -3,7 +3,9 @@ package com.google.engedu.puzzle8;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -53,10 +55,18 @@ public class PuzzleActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        //ImageView image = (ImageView) findViewById(R.id.imageView);
+        imageBitmap = (Bitmap)data.getExtras().get("data");
+        boardView.initialize(imageBitmap,findViewById(R.id.imageView));
+
     }
 
     public void dispatchTakePictureIntent(View view) {
-
+        //Log.d("Debug","Take Photo");
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+        }
     }
 
     public void shuffleImage(View view) {
